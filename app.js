@@ -7,7 +7,7 @@ const MYSQL = require("mysql");
 const multer = require("multer");
 
 const PORT = 3000;
-const DB = "db";
+// const DB = "db";
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use("/dist", express.static(path.join(__dirname + "/dist")));
@@ -40,14 +40,13 @@ app.use(
   })
 );
 
-// Create a connection to the database server
-
+//b9b952c4815809:b3bd4a82@us-cdbr-east-02.cleardb.com/heroku_cf5b8f62683ad6e?reconnect=true
 const connection = MYSQL.createPool({
   connectionLimit: 10,
   host: "us-cdbr-east-02.cleardb.com",
-  user: "b3b51a42f77795",
-  password: "67493942",
-  database: "heroku_c20abffc710345a",
+  user: "	b9b952c4815809",
+  password: "	b3bd4a82",
+  database: "heroku_cf5b8f62683ad6e",
 });
 
 // const connection = MYSQL.createPool({
@@ -1184,6 +1183,10 @@ function buildLogin(req) {
 }
 
 //server listener
-app.listen(PORT, "0.0.0.0", function () {
-  console.log("express server is working");
+// app.listen(PORT, "0.0.0.0", function () {
+//   console.log("express server is working");
+// });
+
+app.listen(process.env.PORT, process.env.IP, function () {
+  console.log("Express Server is Running...");
 });
