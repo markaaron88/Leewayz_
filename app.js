@@ -42,7 +42,6 @@ app.use(
 
 //b9b952c4815809:b3bd4a82@us-cdbr-east-02.cleardb.com/heroku_cf5b8f62683ad6e?reconnect=true
 const connection = MYSQL.createPool({
-  connectionLimit: 10,
   host: "us-cdbr-east-02.cleardb.com",
   user: "	b9b952c4815809",
   password: "	b3bd4a82",
