@@ -1,0 +1,212 @@
+<%- include('partials/header'); -%>
+
+
+          
+        
+          
+            <h3>Listings in your Area</h3>
+          <h4>Select icon and hit the Select listing button to get all the listing information: <span class="glyphicon">&#xe165;</span> </h4>
+            <form method="post" action="/viewlisting">
+              <br>
+              <br> 
+              <div class = "listingpage">
+              <th> <% data.forEach(function(listings){ %>
+                <input type="radio" id="<%= listings.id%>" name="listing" value="<%= listings.id%>">
+                  <td> <img src="<%= listings.image1%>"></td>
+                  <td><img src="<%= listings.image2%>"></td> 
+                  <td><img src="<%= listings.image3%>"></td> 
+                  Street Address:
+                  <td><%= listings.streetAddress %></td><br>
+                  State:
+                  <td><%= listings.state %></td><br>
+                  City:
+                  <td><%= listings.city %></td><br>
+                  ZIP CODE:
+                  <td><%= listings.zipcode %></td><br>
+                  Rent:$
+                  <td><%= listings.fees %></td><br>
+                  Rooms:
+                    <td><%= listings.rooms %></td><br>
+                  <% }) %> </th>
+                </div>
+              <!-- <div class = "listingpage1">
+                  Street Address:
+                  <th> <% data.forEach(function(listings){ %>
+                    <td><%= listings.streetAddress %></td><br>
+                    State:
+                    <td><%= listings.state %></td><br>
+                    City:
+                    <td><%= listings.city %></td><br>
+                    ZIP CODE:
+                    <td><%= listings.zipcode %></td><br>
+                    Number or people living currently in home:
+                    <td><%= listings.owner %></td><br>
+                    Rooms:
+                    <td><%= listings.rooms %></td><br>
+                    Sqft:
+                    <td><%= listings.sqft %></td><br>
+                    Bathrooms:
+                    <td><%= listings.bathrooms %></td><br>
+                    Pets:
+                    <%if (listings.pets == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.pets == 0) { %><br>
+                      <td>No</td>
+                    <% } %> <br>
+                    Date Available:
+                    <td><%= listings.dateAvailable %></td><br>
+                    Cooling:
+                    <%if (listings.cooling == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.cooling == 0) { %>
+                      <td>No</td>
+                    <% } %><br>
+                    Heating:
+                    <%if (listings.heating == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.heating == 0) { %>
+                      <td>No</td>
+                    <% } %> <br>
+                      Parking:
+                    <td><%= listings.parking %></td><br>
+                    Deposit:
+                    <td><%= listings.deposit %></td><br>
+                    Rent:
+                    <td><%= listings.fees %></td><br>
+                    Utilities:
+                    <td><%= listings.utilities %></td><br>
+                    Description:
+                    <td><%= listings.description %></td><br>
+                    Property Type:
+                    <td><%= listings.propertyType %></td><br>
+                    Handicap Accessible:
+                    <%if (listings.handicapAccessible == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.handicapAccessible== 0) { %>
+                      <td>No</td>
+                    <% } %><br>
+                    Smoking:
+                    <%if (listings.smokingArea == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.smokingArea == 0) { %>
+                      <td>No</td>
+                      <% } %> <br>        
+              <% }) %> </th>
+                    </div> -->
+      
+  
+<!-- 
+            <th>Photo 1</th> 
+            <th>Photo 2</th> 
+            <th>Photo 3</th> 
+            <th>Street Address</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Zipcode</th>
+            <th>Property Owner</th>
+            <th>Rooms</th>
+            <th>Sqft</th>
+            <th>Bathrooms</th>
+            <th>Pets</th>
+            <th>Date Available</th>
+            <th>Cooling</th>
+            <th>Heating</th>
+            <th>Parking</th>
+            <th>Deposit</th>
+            <th>fees</th>
+            <th>Utilities</th>
+            <th>Description</th>
+            <th>Property Type</th>
+            <th>Handicap Accessible</th>
+            <th>Smoking Area</th>
+            <th>Selection</th>
+        </tr>
+        <% if (data) { %>
+            <% data.forEach(function(listings){ %>
+                <tr>
+                  <td>
+                    <img src="<%= listings.image1%>">
+                  </td>
+                  <td>
+                    <img src="<%= listings.image2%>">
+                  </td>
+                  <td>
+                    <img src="<%= listings.image3%>">
+                  </td>
+                    <td><%= listings.streetAddress %></td>
+                    <td><%= listings.state %></td>
+                    <td><%= listings.city %></td>
+                    <td><%= listings.zipcode %></td>
+                    <td><%= listings.owner %></td>
+                    <td><%= listings.rooms %></td>
+                    <td><%= listings.sqft %></td>
+                    <td><%= listings.bathrooms %></td>
+                    <%if (listings.pets == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.pets == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <td><%= listings.dateAvailable %></td>
+                    <%if (listings.cooling == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.cooling == 0) { %>
+                      <td>No</td>
+                    <% } %>
+                    <%if (listings.heating == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.heating == 0) { %>
+                      <td>No</td>
+                    <% } %>   
+                    <td><%= listings.parking %></td>
+                    <td><%= listings.deposit %></td>
+                    <td><%= listings.fees %></td>
+                    <td><%= listings.utilities %></td>
+                    <td><%= listings.description %></td>
+                    <td><%= listings.propertyType %></td>
+                    <%if (listings.handicapAccessible == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.handicapAccessible== 0) { %>
+                      <td>No</td>
+                    <% } %>
+                    <%if (listings.smokingArea == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.smokingArea == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <td><input type="radio" id="<%= listings.id%>" name="listing" value="<%= listings.id%>"></td>
+                    <div style="float:left">
+                    </div>
+                </td>
+            </tr>
+        <% }) %>
+        <% } %>
+     
+
+    </table>
+    </div>  -->
+
+    <div class="btn-group" style="width:100%">
+    <button type="submit" class="button">Select listing</button>  
+  </form>
+ 
+  <br>
+  <form method="get" action="/addlisting">
+    <button class = "button" type="submit">Add Listing</button>
+
+  <form method="post" action="/deletemylisting">
+    <button class = "button" type="submit">Delete My Listing</button>
+  </form>
+</div>
+<br>
+<br>
+ <%- include('partials/footer'); -%>

@@ -1,0 +1,62 @@
+<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html>
+    
+        <main>
+          <div class="jumbotron">
+            <p>Your Profile</p>
+            <div class = "listing">
+
+            <img src="<%= data[0].image %>" alt="No Profile Image Provided">
+
+            <table width='100%' border=5>
+            <tr style='text-align:left; background-color:white'>
+            
+            <th>Image</th>
+            <th>City</th>
+            <th>ZIP code</th>
+            <th>References</th>
+            <th>Description</th>
+            <th>Number of People</th>
+            <th>Length of Stay</th>
+            <th>How many pets do you have?If yes, what breed?</th>
+            <th>Smoker friendly?(e.g Cigarette, Cannabis, Vape)</th>
+        </tr>
+        <% if (data) { %>
+            <% data.forEach(function(renter){ %>
+
+                <tr>
+                  <td>
+                  </td>
+                    <!-- <td><%= data.propic%></td> -->
+                    <td><%= renter.city %></td> 
+                    <td><%= renter.zipcode%></td> 
+                    <td><%= renter.refnames %></td> 
+                    <td><%= renter.description%></td> 
+                    <td><%= renter.numpeople %></td> 
+                    <td><%= renter.length%></td> 
+                    <td><%= renter.pets %></td> 
+                    <td><%= renter.smoking%></td> 
+                    <div style="float:left">
+                    </div>
+                </td>
+            </tr>
+        <% }) %>
+        <% } %>
+     
+    </table>
+    </div>
+  </main>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <footer>
+    <%- include('partials/footer'); -%>
+  </footer>
+</body>
+
+</html>

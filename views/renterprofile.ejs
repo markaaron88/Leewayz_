@@ -1,0 +1,42 @@
+<%- include('partials/header'); -%>
+        
+          <div class="imgcontainer">
+            <img src="img/logo_header.png"  height="500" alt="Avatar" class="avatar">
+          </div>
+        
+
+
+          <div class = "listing">
+
+            <form method="post" action="/renterprofile">
+           
+            <label for="city"><b>Enter your city</b></label>
+            <input type="text" placeholder="City(eg.'San Jose.')" name="city" required>
+            
+            <label for="zipcode"><b>Enter your ZIP CODE</b></label>
+            <input type="text" placeholder="ZIP CODE(eg.'95125')" name="zipcode" required>
+            
+            <label for="numpeople"><b>Number of who will be living in the room you want to rent?</b></label>
+            <input type="text" placeholder="(eg.'2')" name="numpeople" required>
+
+            <label for="length"><b>Length of stay</b></label>
+            <input type="text" placeholder="How long will you be staying?(eg.'I hope to stay 6 months to a year.')" name="length" required>
+            
+            <label for="pets"><b>How many pets do you have? If so what kind?</b></label>
+            <input type="text" placeholder="(eg.'I have 2 dogs, they are both pugs.')" name="pets" required>
+
+            <label for="smoking"><b>Smoker friendly? (e.g Cigarette, Cannabis, Vape)</b></label>
+            <input type="text" placeholder="(eg.'I do not smoke but not opposed to living in a space where people do.')" name="smoking" required>
+
+            <label for="refnames"><b>List any references</b></label>
+            <input type="text" placeholder="References(eg.'I have 1 reference.')" name="refnames" required>
+              
+            <label for="description">Tells us about yourself</label>
+            <input type="text" name="description" placeholder="(eg.'I enjoy going outdoors and hiking.')" style="width:400px" required></textarea>
+
+            <input type="hidden" name="userId" value="<%= userId %>">
+            <br>
+              <button type="submit" class="button">Submit</button>
+            </form><br>
+          </div>      
+<%- include('partials/footer'); -%>

@@ -1,0 +1,19 @@
+<%- include('partials/header'); -%>
+
+<h1>Delete Listing By ID</h1>
+
+<div class = "deletelisting">
+  <form method="post" action="/dellistingid">
+  <label><b>Listing ID to Delete</b></label>
+  <input type="text" placeholder="Id" name="id" required>
+  <button class = "button" type="submit">Delete Listing</button>
+  </form><br>
+</div>
+
+<br /><br />
+<label>Return to Admin Menu</label>  
+<form method="post" action="/adminreroute">
+  <button class = "button" type="submit">Return</button>
+</form>
+
+<%- include('partials/footer'); -%>

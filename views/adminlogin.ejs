@@ -1,0 +1,26 @@
+<%- include('partials/header'); -%>
+
+
+
+<form method="post">
+  <div class="imgcontainer">
+    <img src="img/logo_header.png"  height="500" alt="Avatar" class="avatar">
+  </div>
+
+  <div class = "listing">
+    <label for="uname"><b>Admin Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Admin Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+    <br>
+      <form action="/admin" method="post">
+    <button class = "button" type="submit">Login</button>
+  </div>
+    </form>
+    
+    
+
+
+
+<%- include('partials/footer'); -%>

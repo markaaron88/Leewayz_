@@ -1,0 +1,19 @@
+<%- include('partials/header'); -%>
+
+<h1>Remove User By ID</h1>
+
+<div class = "deleteuser">
+  <form method="post" action="/deluserid">
+  <label><b>Email of User To Delete</b></label>
+  <input type="text" placeholder="Id" name="id" required>
+  <button class = "button" type="submit">Delete User</button>
+  </form><br>
+</div>
+
+<br /><br />
+<label>Return to Admin Menu</label>  
+<form method="post" action="/adminreroute">
+  <button class = "button" type="submit">Return</button>
+</form>
+
+<%- include('partials/footer'); -%>

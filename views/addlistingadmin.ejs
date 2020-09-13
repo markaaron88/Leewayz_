@@ -1,0 +1,80 @@
+<%- include('partials/header'); -%>
+
+<h1>Insert a Listing</h1>
+
+<div class = "insertlisting">
+  <form method="post" action="/insertlisting">
+  <label><b>Street Address</b></label>
+  <input type="text" placeholder="Street Address" name="address" required>
+
+  <label><b>State</b></label>
+  <input type="text" placeholder="State" name="state" required>
+
+  <label><b>City</b></label>
+  <input type="text" placeholder="City" name="city" required>
+
+  <label><b>Zipcode</b></label>
+  <input type="text" placeholder="Enter Username" name="zipcode" required>
+
+  <label><b>Owner</b></label>
+  <input type="text" placeholder="Enter Owner" name="owner" required>
+  
+  <label><b>Rooms</b></label>
+  <input type="text" placeholder="Room Count" name="rooms" required>
+  
+  <label><b>Sqft</b></label>
+  <input type="text" placeholder="Square Feet" name="sqft" required>
+
+  <label><b>Bathrooms</b></label>
+  <input type="text" placeholder="Bathroom Count" name="baths" required>
+
+  <label><b>Parking</b></label>
+  <input type="text" placeholder="Parking" name="parking" required>
+  
+  <label><b>Deposit</b></label>
+  <input type="text" placeholder="Deposit" name="deposit" required>
+
+  <label><b>Fees</b></label>
+  <input type="text" placeholder="Fees" name="fees" required>
+  
+  <label><b>Utilities</b></label>
+  <input type="text" placeholder="Utilities" name="utilities" required>
+
+  <label><b>Description</b></label>
+  <input type="text" placeholder="Description" name="desc" required>
+
+  <label><b>Property Type</b></label>
+  <input type="text" placeholder="Enter Property Type" name="type" required>
+
+  <label><b>Pets</b></label>
+  <label><b>Yes</b></label><input type="radio" id="true" name="pets" value="true"><br />
+  <label><b>No</b></label><input type="radio" id="false" name="pets" value="false">
+
+  <label><b>Cooling</b></label>
+  <label><b>Yes</b></label><input type="radio" id="true" name="cooling" value="true"><br />
+  <label><b>No</b></label><input type="radio" id="false" name="cooling" value="false">
+
+  <label><b>Heating</b></label>
+  <label><b>Yes</b></label><input type="radio" id="true" name="heating" value="true"><br />
+  <label><b>No</b></label><input type="radio" id="false" name="heating" value="false">
+
+  <label><b>Handicap Accessible</b></label>
+  <label><b>Yes</b></label><input type="radio" id="true" name="accessibility" value="true"><br />
+  <label><b>No</b></label><input type="radio" id="false" name="accessibility" value="false">
+
+  <label><b>Smoking</b></label>
+  <label><b>Yes</b></label><input type="radio" id="true" name="smoking" value="true"><br />
+  <label><b>No</b></label><input type="radio" id="false" name="smoking" value="false">
+ 
+  <button class = "button" type="submit">Add Listing</button>
+
+  </form><br>
+</div>
+
+
+<label>Return to Admin Menu</label>  
+<form method="post" action="/adminreroute">
+  <button class = "button" type="submit">Return</button>
+</form>
+   
+  <%- include('partials/footer'); -%>

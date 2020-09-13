@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+
+<br />
+<br />
+<h1>Admin Functions:</h1>
+
+
+<label for="adminTask">Choose an option:</label>        
+<form method="post" action="/adminchooser">
+  <select name="routing">
+    <option value="addUser">Add User</option>
+    <option value="delUserEmail">Delete User By Email</option>
+    <option value="delUser">Delete User By Id</option>
+    <option value="addListing">Add Listing</option>
+    <option value="delListing">Delete Listing By Id</option>
+  </select>
+  <button class = "button" type="submit">Select</button>
+</form>
+<br />
+<br />
+
+<%- include('partials/footer'); -%>

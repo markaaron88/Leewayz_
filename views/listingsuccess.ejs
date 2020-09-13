@@ -1,0 +1,23 @@
+<%- include('partials/header'); -%>
+     
+
+<div class="imgcontainer">
+    <img src="img/logo_header.png"  height="500" alt="Avatar" class="avatar">
+  
+<div class = "signupsucc">
+    <h1>Now please upload some photos for renters to see!</h1>
+      <form id="uploadForm"
+          enctype="multipart/form-data"
+          action="/listingsuccess"
+          method="post">
+          <input type="file" name="listingPhoto" class = "button center-block"/>
+          <input type="file" name="listingPhoto" class = "button center-block"/>
+          <input type="file" name="listingPhoto" class = "button center-block"/><br>
+      <input type="hidden" id="listingid" name="listingid" value="<%= id %>">
+      <input type="submit" class = "button" value="Upload Image" name="submit">
+      <span id = "status"></span>
+
+    </form>
+  </div>
+
+ <%- include('partials/footer'); -%>

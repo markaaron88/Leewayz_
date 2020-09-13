@@ -1,0 +1,66 @@
+<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html>
+    
+        <main>
+          <div class="jumbotron">
+            <h3>Your Profile</h3>
+            <div class = "listing">
+          <br>
+          <br> 
+            <table width='100%' border=5>
+            <tr style='text-align:left; background-color: #DAE4F3'>
+            <th>Profile Photo</th>
+            <th>City</th>
+            <th>ZIP code</th>
+            <th>References</th>
+            <th>Description</th>
+            <th>Number of People</th>
+            <th>Length of Stay</th>
+            <th>How many pets do you have?If yes, what breed?</th>
+            <th>Smoker friendly?(e.g Cigarette, Cannabis, Vape)</th>
+           
+        </tr>
+        <% if (data) { %>
+            <% data.forEach(function(renter){ %>
+
+                <tr>
+                  <td>
+                    <img src="<%= renter.image%>">
+                  </td>
+                   <td><%= renter.city %></td> 
+                    <td><%= renter.zipcode%></td> 
+                    <td><%= renter.refnames %></td> 
+                    <td><%= renter.description%></td> 
+                    <td><%= renter.numpeople %></td> 
+                    <td><%= renter.length%></td> 
+                    <td><%= renter.pets %></td> 
+                    <td><%= renter.smoking%></td> 
+                    <div style="float:left">
+                    </div>
+                </td>
+            </tr>
+        <% }) %>
+        <% } %>
+     
+    </table>
+    </div>
+  </main>
+  <form method="post" action="/deletemyprofile">
+    <input type="hidden" name="renterId" value="<%= data[0].id %>">
+    <button class = "button" type="submit">Delete Your Profile</button>
+  </form>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer>
+    <%- include('partials/footer'); -%>
+  </footer>
+</body>
+
+</html>

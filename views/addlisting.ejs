@@ -1,0 +1,123 @@
+<%- include('partials/header'); -%>
+
+     
+          <div class="imgcontainer">
+            <img src="img/logo_header.png"  height="500" alt="Avatar" class="avatar">
+          </div>
+        
+          
+         <div class = "listing">
+        
+           <form method="post" action="/addlisting">
+                <!--Address-->
+            <label for="streetAddress">Address</label>
+            <input type="text" id="streetAddress" name="streetAddress" placeholder="Enter address (eg.'2342 Rubino Dr.')" required>
+            
+            <!--State-->
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="Enter state (eg.'CA)" required>
+            
+            <!--City-->
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter city (eg.'San Jose')" required>
+         
+            
+            <!--Zip Code-->
+            <label for="zipcode">Zip Code</label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="Enter zip code (eg.'95125')" required>
+
+                
+            <!--Rent -->
+            <label for="fees">Rent</label>
+            <input type="text" id="fees" name="fees" placeholder="Enter monthly rent price (eg.'2500')" required>
+
+        
+           <!--Deposit -->
+           <label for="deposit">Deposit</label>
+           <input type="text" id="deposit" name="deposit" placeholder="Enter deposit (eg.'500')" required>
+
+
+           <!--Sq ft-->
+            <label for="sqft">Square Footage</label>
+            <input type="text" id="sqft" name="sqft" placeholder="Square footage of space (eg.'700')" required>
+
+
+              <!--Rooms-->
+              <label for="rooms">Rooms</label>
+              <input type="text" id="rooms" name="rooms" placeholder="How many rooms (eg.'2')" required>
+                   
+        
+            <!--Cooling -->
+              <!--Rooms-->
+               <label for="bathrooms">Bath Rooms</label>
+                <input type="text" id="bathrooms" name="bathrooms" placeholder="How many bathrooms (eg.'2')" required>
+
+                     <!--Utilites-->
+               <label for="utilities">Utilites</label>
+               <input type="text" id="utilities" name="utilities" placeholder="Monthly Utilite fee (eg.'250')" required>
+
+                  <!--Utilites-->
+               <label for="parking">Parking</label>
+               <input type="text" id="parking" name="parking" placeholder="Parking (eg.'Yes 1 spot')" required>
+
+
+                <!--PropertyType-->
+                <label for="propertyType">Property Type</label>
+                <input type="text" id="propertyType" name="propertyType" placeholder="Property Type (eg.'Apartment')" required>
+
+            <!--Date Available -->
+            <label for="dateAvailable">Date Available</label>
+            <input type="text" id="dateAvailable" name="dateAvailable" placeholder="Date Available (eg.'2020-05-27)" required>
+
+          <label for="description">Add Description</label>
+          <input type = "text" textarea id="description" name="description" placeholder="Write something about yourself" required>   
+          
+       
+ 
+          <div class="grid-container">
+                 <!--Cooling -->
+            <label for="cooling">AC</label>
+            <select id="cooling" name="cooling">
+                    <option value="1">yes</option>
+                    <option value="0">no</option>
+                </select>  
+
+                      <!--Heating-->
+            <label for="heating">Heating</label>
+            <select id="heating" name="heating">
+                    <option value="1">yes</option>
+                    <option value="0">no</option>
+                </select>  
+               
+                  <!--Pets -->
+            <label for="pets">Pets</label>
+            <select id="pets" name="pets">
+                    <option value="1">yes</option>
+                    <option value="0">no</option>
+                </select>  
+
+              <!--Handicap Accessible-->
+              <label for="handicapAccessible">Handicap Accessible</label>
+              <select id="handicapAccessible" name="handicapAccessible">
+                <option value="1">yes</option>
+                <option value="0">no</option>
+                  </select>  
+              
+            <!--Smoking Area-->
+            <label for="smokingArea">Smoking Area</label>
+            <select id="smokingArea" name="smokingArea">
+                <option value="1">yes</option>
+                <option value="0">no</option>
+              </select>      
+
+              </div>
+      
+              <button type="submit" class="button">Submit</button>  
+            </form><br>
+          </div>      
+    </div>
+  </div>
+</div>
+  
+   
+  <%- include('partials/footer'); -%>

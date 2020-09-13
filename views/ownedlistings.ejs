@@ -1,0 +1,118 @@
+<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html>
+    
+        <main>
+          <div class="jumbotron">
+            <h3>Listings</h3>
+            <br>
+            <br> 
+            <form method="post" action="/ownerdelete">
+              <!-- table to display listings-->
+              <table width='100%' border=5>
+          <tr style='text-align:left; background-color: rgba(240, 239, 235)'>
+
+            <th>Photo 1</th> 
+            <th>Photo 2</th> 
+            <th>Photo 3</th> 
+            <th>Street Address</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Zipcode</th>
+            <th>Rooms</th>
+            <th>Sqft</th>
+            <th>Bathrooms</th>
+            <th>Pets</th>
+            <th>Date Available</th>
+            <th>Cooling</th>
+            <th>Heating</th>
+            <th>Parking</th>
+            <th>Deposit</th>
+            <th>fees</th>
+            <th>Utilities</th>
+            <th>Description</th>
+            <th>Property Type</th>
+            <th>Handicap Accessible</th>
+            <th>Smoking Area</th>
+            <th>Selection</th>
+        </tr>
+        <% if (data) { %>
+            <% data.forEach(function(listings){ %>
+                <tr>
+                  <td>
+                    <img src="<%= listings.image1%>">
+                  </td>
+                  <td>
+                    <img src="<%= listings.image2%>">
+                  </td>
+                  <td>
+                    <img src="<%= listings.image3%>">
+                  </td>
+                    <td><%= listings.streetAddress %></td>
+                    <td><%= listings.state %></td>
+                    <td><%= listings.city %></td>
+                    <td><%= listings.zipcode %></td>
+                    <td><%= listings.rooms %></td>
+                    <td><%= listings.sqft %></td>
+                    <td><%= listings.bathrooms %></td>
+                    <%if (listings.pets == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.pets == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <td><%= listings.dateAvailable %></td>
+                    <%if (listings.cooling == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.cooling == 0) { %>
+                      <td>No</td>
+                    <% } %>
+                    <%if (listings.heating == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.heating == 0) { %>
+                      <td>No</td>
+                    <% } %>   
+                    <td><%= listings.parking %></td>
+                    <td><%= listings.deposit %></td>
+                    <td><%= listings.fees %></td>
+                    <td><%= listings.utilities %></td>
+                    <td><%= listings.description %></td>
+                    <td><%= listings.propertyType %></td>
+                    <%if (listings.handicapAccessible == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.handicapAccessible== 0) { %>
+                      <td>No</td>
+                    <% } %>
+                    <%if (listings.smokingArea == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listings.smokingArea == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <td><input type="radio" id="<%= listings.id%>" name="listing" value="<%= listings.id%>"></td>
+                    <div style="float:left">
+                    </div>
+                </td>
+            </tr>
+        <% }) %>
+        <% } %>
+     
+
+    </table>
+    </div>
+    <button type="submit" class="button">Select listing</button>  
+  </form>
+  </main>
+  <br>
+  <br>
+  <br />
+
+  <footer>
+    <%- include('partials/footer'); -%>
+  </footer>
+</body>
+
+</html>

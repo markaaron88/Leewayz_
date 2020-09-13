@@ -1,0 +1,46 @@
+<%- include('partials/header'); -%>
+
+        <h3>Search Renter Profiles in your area.</h3>
+        <h4>Select icon and hit the Contact Info button to get all the listing information: <span class="glyphicon">&#xe165;</span> </h4>
+        <form method="get" action="/profileresults">
+          <input type="text" placeholder="Enter city or ZIP code..." name="cityNameSearch" required>
+          <form action="/profileresults" method="post">
+          <button class = "button" type="submit">Search</button>
+        </form>
+          <br>
+          <br>
+
+          <form method="post" action="/contactrenter">
+          <div class="wrapper2">
+          <th> <% data.forEach(function(renter){ %>
+            <td><input type="radio" id="<%= renter.id%>" name="renter" value="<%= renter.id%>"></td><br />
+            <td><img src="<%= renter.image%>"></td> 
+            City:
+            <td><%= renter.city %></td> <br>
+            ZIP CODE:
+            <td><%= renter.zipcode%></td> <br>
+            References:
+            <td><%= renter.refnames %></td> <br>
+            About yourself:
+            <td><%= renter.description%></td> <br>
+            Number of tenants:
+            <td><%= renter.numpeople %></td> <br>
+            Length of stay:
+            <td><%= renter.length%></td> <br>
+            Pets:
+            <td><%= renter.pets %></td> <br>
+            Smoker friendly:
+            <td><%= renter.smoking%></td> <br>
+           <% }) %> </th>
+       
+          <button type="submit" class="button" >Contact Info</button>  
+        </form>
+  <form method="post" action="/myprofile">
+    <button class = "button" type="submit">Edit Your Profile</button>
+  </form>
+</div>
+  <br>
+  <br>
+
+<%- include('partials/footer'); -%>
+ 

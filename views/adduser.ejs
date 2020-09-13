@@ -1,0 +1,41 @@
+<%- include('partials/header'); -%>
+
+<h1>Insert a User</h1>
+
+<div class = "insertuser">
+  <form method="post" action="/insertUser">
+  <label for="firstName"><b>First Name</b></label>
+  <input type="text" placeholder="First Name" name="firstName" required>
+
+  <label for="lastName"><b>Last Name</b></label>
+  <input type="text" placeholder="Last Name" name="lastName" required>
+
+  <label for="email"><b>E-Mail</b></label>
+  <input type="text" placeholder="Enter E-Mail" name="email" required>
+
+  <label for="username"><b>Username</b></label>
+  <input type="text" placeholder="Enter Username" name="username" required>
+
+  <label for="psw"><b>Password</b></label>
+  <input type="password" placeholder="Enter Password" name="psw" required>
+  
+  <label for="type"><b>Type</b></label>
+  <input type="text" placeholder="Site User" name="type" required>
+  
+  <label for="isAdmin"><b>Admin Status</b></label>
+  <label><b>Yes</b></label><input type="radio" id="true" name="adminStatus" value="true"><br />
+  <label><b>No</b></label><input type="radio" id="false" name="adminStatus" value="false">
+  <br><br>
+     
+  <button class = "button" type="submit">Add User</button>
+ 
+  </form><br>
+</div>
+
+
+<label>Return to Admin Menu</label>  
+<form method="post" action="/adminreroute">
+  <button class = "button" type="submit">Return</button>
+</form>
+   
+  <%- include('partials/footer'); -%>

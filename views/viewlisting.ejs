@@ -1,0 +1,106 @@
+<%- include('partials/header'); -%>
+<!DOCTYPE html>
+<html>
+    
+        <main>
+          <div class="jumbotron">
+            <h3>Your Listing Choice</h3>
+              <!-- table to display listings-->
+              <table width='100%' border=5>
+
+          <tr style='text-align:left; background-color:white'>
+
+            <th>Photo 1</th> 
+            <th>Photo 2</th> 
+            <th>Photo 3</th> 
+            <th>Street Address</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Zipcode</th>
+            <th>Property Owner</th>
+            <th>Rooms</th>
+            <th>Sqft</th>
+            <th>Bathrooms</th>
+            <th>Pets</th>
+            <th>Date Available</th>
+            <th>Cooling</th>
+            <th>Heating</th>
+            <th>Parking</th>
+            <th>Deposit</th>
+            <th>fees</th>
+            <th>Utilities</th>
+            <th>Description</th>
+            <th>Property Type</th>
+            <th>Handicap Accessible</th>
+            <th>Smoking Area</th>
+        </tr>
+                <tr>
+                  <td>
+                    <img src="<%= listing.image1%>">
+                  </td>
+                  <td>
+                    <img src="<%= listing.image2%>">
+                  </td>
+                  <td>
+                    <img src="<%= listing.image3%>">
+                  </td>
+                    <td><%= listing.streetAddress %></td>
+                    <td><%= listing.state %></td>
+                    <td><%= listing.city %></td>
+                    <td><%= listing.zipcode %></td>
+                    <td><%= listing.owner %></td>
+                    <td><%= listing.rooms %></td>
+                    <td><%= listing.sqft %></td>
+                    <td><%= listing.bathrooms %></td>
+                    <%if (listing.pets == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listing.pets == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <td><%= listing.dateAvailable %></td>
+                    <%if (listing.cooling== 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listing.cooling == 0) { %>
+                      <td>No</td>
+                    <% } %>
+                    <%if (listing.heating == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listing.heating == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <td><%= listing.parking %></td>
+                    <td><%= listing.deposit %></td>
+                    <td><%= listing.fees %></td>
+                    <td><%= listing.utilities %></td>
+                    <td><%= listing.description %></td>
+                    <td><%= listing.propertyType %></td>
+                    <%if (listing.handicapAccessible == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listing.handicapAccessible == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <%if (listing.smokingArea == 1) { %>
+                      <td>Yes</td>
+                    <% } %>
+                    <%if (listing.smokingArea == 0) { %>
+                      <td>No</td>
+                    <% } %>  
+                    <div style="float:left">
+                    </div>
+            </tr>
+    </table>
+    </div>
+  </main>
+  <br>
+  <br>
+  <form method="post" action="/listingowner">
+    <input type="hidden" name="ownerId" value="<%= listing.owner %>">
+    <button class = "button" type="submit">Get Contact Information</button>
+  </form>
+<br>
+
+    <%- include('partials/footer'); -%>

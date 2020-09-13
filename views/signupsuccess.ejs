@@ -1,0 +1,22 @@
+<%- include('partials/header'); -%>
+     
+
+<div class="imgcontainer">
+    <img src="img/logo_header.png"  height="500" alt="Avatar" class="avatar">
+  
+<div class = "signupsucc">
+<h1>Welcome what type of user are you?</h1>
+<br>
+<br>
+<form method="get" action="/renterprofile">
+
+    <input type="hidden" name="userid" value="<%= id %>">
+    <button type="submit" class="button">Renter</button>
+</form>
+<br />
+<form method="get" action="/addlisting">
+    <input type="hidden" name="userid" value="<%= id %>">
+    <button type="submit" class="button">Landlord</button>
+</form>
+</div>
+ <%- include('partials/footer'); -%>

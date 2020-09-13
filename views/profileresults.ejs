@@ -1,0 +1,29 @@
+<%- include('partials/header'); -%>
+
+        <h3>Renter in your Area.</h3>
+    
+
+          <div class="wrapper2">
+          <th> <% data.forEach(function(renter){ %>
+            <td><img src="<%= renter.image%>"></td> 
+            City:
+            <td><%= renter.city %></td> <br>
+            ZIP CODE:
+            <td><%= renter.zipcode%></td> <br>
+            References:
+            <td><%= renter.refnames %></td> <br>
+            About yourself:
+            <td><%= renter.description%></td> <br>
+            Number of tenants:
+            <td><%= renter.numpeople %></td> <br>
+            Length of stay:
+            <td><%= renter.length%></td> <br>
+            Pets:
+            <td><%= renter.pets %></td> <br>
+            Smoker friendly:
+            <td><%= renter.smoking%></td> <br>
+           <% }) %> </th>
+          </div>
+  <br>
+<%- include('partials/footer'); -%>
+ 

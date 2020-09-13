@@ -1,0 +1,30 @@
+<%- include('partials/header'); -%>
+     <div class="imgcontainer">
+    <img src="img/logo_header.png"  height="500" alt="Avatar" class="avatar">
+  </div>
+
+<div class = "listing">
+<h1>Your Profle has been created, feel free to check out our newest listings.   
+<a href="/listings" class="button">Listings</a>   
+
+<br>
+<br>
+<h1>Please upload a photo for your profile.</h1>   
+  <form id="uploadForm"
+      enctype="multipart/form-data"
+      action="/profilesuccess"
+      method="post">
+  <input type="file" name="image" class = "button center-block"/>
+  <input type="hidden" name="userid" value="<%= id %>">
+  <input type="hidden" id="renterid" name="renterid" value="<%= id %>">
+  <br>
+  <input type="submit" class = "button" value="Upload Image" name="submit">
+  <!-- <input type='text' id='random' name='random'><br> -->
+  <span id = "status"></span>
+
+  <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img">
+
+</form><br>
+</div>  
+
+<%- include('partials/footer'); -%>
