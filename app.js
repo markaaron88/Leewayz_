@@ -43,9 +43,9 @@ app.use(
 //b9b952c4815809:b3bd4a82@us-cdbr-east-02.cleardb.com/heroku_cf5b8f62683ad6e?reconnect=true
 const connection = MYSQL.createPool({
   host: "us-cdbr-east-02.cleardb.com",
-  user: "	b9b952c4815809",
-  password: "	b3bd4a82",
-  database: "heroku_cf5b8f62683ad6e",
+  user: "	b4b77e152be949",
+  password: "49f4d260",
+  database: "heroku_05dd0fe8b4e38fb",
 });
 
 // const connection = MYSQL.createPool({
@@ -83,7 +83,7 @@ app.get("/legal", function (req, res) {
 
 //Search listings by city or ZIP code...
 app.get("/searchresults", async function (req, res) {
-  let sql = "SELECT * from leewayz.listings WHERE ";
+  let sql = "SELECT * from listings WHERE ";
   let zipcode = Number(req.query.cityNameSearch);
 
   if (zipcode) {
@@ -123,7 +123,7 @@ app.get("/searchresults", async function (req, res) {
 //listing just queries the database
 var router = express.Router();
 app.get("/listings", async function (req, res, next) {
-  let sql = "SELECT * from leewayz.listings";
+  let sql = "SELECT * from listings";
   let status = await connection.query(sql, function (err, rows, fields) {
     if (err) throw err;
     res.render("listings", {
@@ -136,7 +136,7 @@ app.get("/listings", async function (req, res, next) {
 
 //profile just queries the database of all users who have created a user profile
 app.get("/profiles", async function (req, res, next) {
-  let sql = "SELECT * from leewayz.renter";
+  let sql = "SELECT * from renter";
   let status = await connection.query(sql, function (err, rows, fields) {
     if (err) throw err;
     res.render("profiles", {
@@ -150,7 +150,7 @@ module.exports = router;
 
 //Search Profile by city or ZIP code...
 app.get("/profileresults", async function (req, res) {
-  let sql = "SELECT * from leewayz.renter WHERE ";
+  let sql = "SELECT * from renter WHERE ";
   let zipcode = Number(req.query.cityNameSearch);
   if (zipcode) {
     sql += "zipcode = ?";
@@ -318,7 +318,7 @@ app.post("/signup", async function (req, res) {
   req.session.type = type;
   req.session.lastName = lastName;
   query =
-    "INSERT INTO leewayz.users (firstName, lastName, email, username, password, type, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO users (firstName, lastName, email, username, password, type, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
   let search = await connection.query(
     query,
@@ -348,7 +348,7 @@ app.post("/renterprofile", async function (req, res) {
   let smoking = req.body.smoking;
 
   query =
-    "INSERT INTO leewayz.renter (userid,city, zipcode,refnames, description, numpeople,length, pets, smoking) VALUES (?,?, ?, ?, ?, ?, ?,?,?)";
+    "INSERT INTO renter (userid,city, zipcode,refnames, description, numpeople,length, pets, smoking) VALUES (?,?, ?, ?, ?, ?, ?,?,?)";
   let search = await connection.query(
     query,
     [
@@ -381,7 +381,7 @@ app.post("/profilesuccess", upload.single("image"), async (req, res) => {
   data.propic = req.file.filename;
   console.log(req);
 
-  query = "UPDATE leewayz.renter SET image = ? WHERE id = ?";
+  query = "UPDATE renter SET image = ? WHERE id = ?";
   await connection.query(query, [data.propic, id], function (
     err,
     rows,
@@ -429,7 +429,7 @@ app.post("/addlisting", async function (req, res) {
 
   // Insert listing to db
   query =
-    "INSERT INTO leewayz.listings(streetAddress,state,city,zipcode,owner,rooms,sqft,bathrooms,pets,dateAvailable,cooling,heating,parking,deposit,fees,utilities,description,propertyType,handicapAccessible,smokingArea) VALUES (?,?, ?, ?, ?, ?, ?,?,?,?,?,?,?, ?, ?, ?, ?, ?,?,?)";
+    "INSERT INTO listings(streetAddress,state,city,zipcode,owner,rooms,sqft,bathrooms,pets,dateAvailable,cooling,heating,parking,deposit,fees,utilities,description,propertyType,handicapAccessible,smokingArea) VALUES (?,?, ?, ?, ?, ?, ?,?,?,?,?,?,?, ?, ?, ?, ?, ?,?,?)";
 
   let search = await connection.query(
     query,
@@ -480,7 +480,7 @@ app.post("/listingsuccess", async function (req, res) {
     let file3 = req.files[2].filename;
 
     query =
-      "UPDATE leewayz.listings SET image1 = ?, image2 = ?, image3 = ? WHERE id = ? ";
+      "UPDATE listings SET image1 = ?, image2 = ?, image3 = ? WHERE id = ? ";
     await connection.query(query, [file1, file2, file3, id], function (
       err,
       rows,
@@ -503,7 +503,7 @@ app.post("/adminreroute", function (req, res) {
 app.post("/admin", async function (req, res) {
   let username = req.body.uname;
   let passwd = req.body.psw;
-  let sql = "SELECT * FROM leewayz.users WHERE username = ?";
+  let sql = "SELECT * FROM users WHERE username = ?";
   let sqlParams = [username];
 
   let result = await checkUsername(username);
@@ -536,7 +536,7 @@ app.post("/login", async function (req, res) {
   let username = req.body.uname;
   let passwd = req.body.psw;
 
-  let sql = "SELECT * FROM leewayz.users WHERE username = ?";
+  let sql = "SELECT * FROM users WHERE username = ?";
   let sqlParams = [username];
 
   let dbPassword = "";
@@ -940,7 +940,7 @@ app.post("/contactrenter", async function (req, res) {
 // Checks the provided password against the database password for authentication
 
 function getUserIdByRenterId(id) {
-  let sql = "SELECT userid FROM leewayz.renter WHERE id = ?";
+  let sql = "SELECT userid FROM renter WHERE id = ?";
   let params = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, params, function (err, rows, fields) {
@@ -951,7 +951,7 @@ function getUserIdByRenterId(id) {
 }
 
 function getListingsByOwnerId(id) {
-  let sql = "SELECT * FROM leewayz.listings WHERE owner = ?";
+  let sql = "SELECT * FROM listings WHERE owner = ?";
   let params = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, params, function (err, rows, fields) {
@@ -970,7 +970,7 @@ function checkPassword(password, dbPassword) {
 }
 
 function checkUsername(username) {
-  let sql = "SELECT * FROM leewayz.users WHERE username = ? ";
+  let sql = "SELECT * FROM users WHERE username = ? ";
   return new Promise(function (resolve, reject) {
     connection.query(sql, [username], function (err, rows, fields) {
       if (err) throw err;
@@ -981,7 +981,7 @@ function checkUsername(username) {
 
 function uploadImagesListing(file1, file2, file3, id) {
   let sql =
-    "UPDATE leewayz.listings SET image1 = ?, image2 = ?, image3 = ? WHERE id = ?";
+    "UPDATE listings SET image1 = ?, image2 = ?, image3 = ? WHERE id = ?";
   let sqlParams = [file1, file2, file3, id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
@@ -1001,7 +1001,7 @@ function insertUser(
   adminStatus
 ) {
   let sql =
-    "INSERT INTO leewayz.users (firstName, lastName, email, username, password, type, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO users (firstName, lastName, email, username, password, type, isAdmin) VALUES (?, ?, ?, ?, ?, ?, ?)";
   let sqlParams = [
     firstname,
     lastname,
@@ -1020,7 +1020,7 @@ function insertUser(
 }
 
 function getRenterProfileByUserId(id) {
-  let sql = "SELECT * FROM leewayz.renter WHERE userid = ?";
+  let sql = "SELECT * FROM renter WHERE userid = ?";
   let sqlParams = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
@@ -1031,7 +1031,7 @@ function getRenterProfileByUserId(id) {
 }
 
 function getListingById(id) {
-  let sql = "SELECT * FROM leewayz.listings WHERE id = ?";
+  let sql = "SELECT * FROM listings WHERE id = ?";
   let params = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, params, function (err, rows, fields) {
@@ -1042,7 +1042,7 @@ function getListingById(id) {
 }
 
 function getOwnerById(id) {
-  let sql = "SELECT * FROM leewayz.users WHERE id = ?";
+  let sql = "SELECT * FROM users WHERE id = ?";
   let params = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, params, function (err, rows, fields) {
@@ -1054,7 +1054,7 @@ function getOwnerById(id) {
 
 function deleteUserByEmail(email) {
   console.log("in del function");
-  let sql = "DELETE FROM leewayz.users WHERE email = ?";
+  let sql = "DELETE FROM users WHERE email = ?";
   let sqlParams = [email];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
@@ -1065,7 +1065,7 @@ function deleteUserByEmail(email) {
 }
 
 function deleteRenterById(id) {
-  let sql = "DELETE FROM leewayz.renter WHERE id = ?";
+  let sql = "DELETE FROM renter WHERE id = ?";
   let sqlParams = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
@@ -1076,7 +1076,7 @@ function deleteRenterById(id) {
 }
 
 function deleteUserById(id) {
-  let sql = "DELETE FROM leewayz.users WHERE id = ?";
+  let sql = "DELETE FROM users WHERE id = ?";
   let sqlParams = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
@@ -1087,7 +1087,7 @@ function deleteUserById(id) {
 }
 
 function getUserIdViaEmail(email) {
-  let sql = "SELECT id FROM leewayz.users WHERE email = ?";
+  let sql = "SELECT id FROM users WHERE email = ?";
   let sqlParams = [email];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
@@ -1120,7 +1120,7 @@ function insertListing(
   smokingArea
 ) {
   let sql =
-    "INSERT INTO leewayz.listings (streetAddress,state,city,zipcode,owner,rooms,sqft,bathrooms,pets,dateAvailable,cooling,heating,parking,deposit,fees,utilities,description,propertyType,handicapAccessible,smokingArea) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO listings (streetAddress,state,city,zipcode,owner,rooms,sqft,bathrooms,pets,dateAvailable,cooling,heating,parking,deposit,fees,utilities,description,propertyType,handicapAccessible,smokingArea) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   let sqlParams = [
     streetAddr,
     state,
@@ -1152,7 +1152,7 @@ function insertListing(
 }
 
 function deleteListing(id) {
-  let sql = "DELETE FROM leewayz.listings WHERE id = ?";
+  let sql = "DELETE FROM listings WHERE id = ?";
   let sqlParams = [id];
   return new Promise(function (resolve, reject) {
     connection.query(sql, sqlParams, function (err, rows, fields) {
